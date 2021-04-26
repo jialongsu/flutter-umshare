@@ -1,0 +1,36 @@
+
+# 友盟
+-keep publicinterface com.umeng.socialize.**
+-keep publicinterface com.umeng.socialize.sensor.**
+-keep publicinterface com.umeng.scrshot.**
+-keep publicclass com.umeng.socialize.*{*;}
+-keep class com.umeng.**{*;}
+-keep class com.umeng.scrshot.**
+-keep publicclass com.tencent.**{*;}
+-keep class com.umeng.socialize.sensor.**
+-keep class com.umeng.socialize.handler.**
+-keep class com.umeng.socialize.handler.*
+
+# qq
+-keep class com.umeng.qq.handler.**
+-keep class com.umeng.qq.handler.*
+-keep classUMMoreHandler{*;}
+-keep class com.tencent.mm.sdk.**{
+*;
+}
+-keep class com.tencent.**{*;}
+-dontwarn com.tencent.**
+
+#微博
+-keep class com.umeng.socialize.impl.ImageImpl{*;}
+-keep class com.sina.**{*;}
+-dontwarn com.sina.**
+
+#支付宝
+-keep class  com.alipay.share.sdk.**{
+*;
+}
+
+#钉钉
+-keep class com.android.dingtalk.share.ddsharemodule.**{*;}
+-keepattributes Signature

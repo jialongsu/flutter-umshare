@@ -1,0 +1,41 @@
+group 'com.arno.umshare'
+version '1.0'
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.0'
+    }
+}
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://dl.bintray.com/thelasterstar/maven/" }
+    }
+}
+apply plugin: 'com.android.library'
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 16
+        consumerProguardFiles 'consumer-proguard-rules.txt'
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    // 显式依赖umeng asms库
+    implementation files('libs/umeng-asms-armeabi-v1.2.2.aar') // asms包依赖(必选)
+    //新浪官方依赖库
+    implementation 'com.sina.weibo.sdk:core:10.10.0:openDefaultRelease@aar'
+    //QQ官方依赖库
+    implementation 'com.tencent.tauth:qqopensdk:3.51.2'
+}
