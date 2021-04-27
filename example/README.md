@@ -1,6 +1,6 @@
-# umshare_example
+# example
 
-Demonstrates how to use the umshare plugin.
+A new Flutter project.
 
 ## Getting Started
 

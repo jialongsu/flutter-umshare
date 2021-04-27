@@ -14,7 +14,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
+  String? _platformVersion = 'Unknown';
 
   @override
   void initState() {
@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    String platformVersion;
+    String? platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       await Umshare.init('6049a5076ee47d382b7c2e31');
@@ -61,8 +61,7 @@ class _MyAppState extends State<MyApp> {
               Center(
                 child: Text('Running ---on: $_platformVersion\n'),
               ),
-              FlatButton(
-                color: Colors.blue,
+              TextButton(
                 onPressed: () async {
                   var res = await Umshare.share(UmShareWebModel(
                     'https://www.baidu.com',
@@ -75,16 +74,14 @@ class _MyAppState extends State<MyApp> {
                 },
                 child: Text('分享'),
               ),
-              FlatButton(
-                color: Colors.tealAccent,
+              TextButton(
                 onPressed: () async {
                   var res = await Umshare.auth(UmShareMedia.weiBo);
                   print('========登录====res=======$res');
                 },
                 child: Text('登录'),
               ),
-              FlatButton(
-                color: Colors.tealAccent,
+              TextButton(
                 onPressed: () async {
                   var res = await Umshare.checkInstall(UmShareMedia.dingDing);
                   print('========检查是否安装应用====dingDing=======$res');

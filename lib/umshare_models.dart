@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 import 'utils.dart';
 
 mixin UmShareBaseModel {
@@ -21,12 +19,12 @@ class UmInitWeiBo implements UmInitBaseModel {
   final String redirectUrl;
 
   UmInitWeiBo({
-    @required this.appKey,
-    @required this.appSecret,
-    @required this.redirectUrl,
-  })  : assert(appKey != null && appKey.isNotEmpty),
-        assert(appSecret != null && appSecret.isNotEmpty),
-        assert(redirectUrl != null && redirectUrl.isNotEmpty);
+    required this.appKey,
+    required this.appSecret,
+    required this.redirectUrl,
+  })   : assert(appKey.isNotEmpty),
+        assert(appSecret.isNotEmpty),
+        assert(redirectUrl.isNotEmpty);
 
   @override
   Map<String, Object> toMap() {
@@ -49,12 +47,12 @@ class UmInitQQ implements UmInitBaseModel {
   final String universalLink;
 
   UmInitQQ({
-    @required this.appKey,
-    @required this.appSecret,
-    @required this.universalLink,
-  })  : assert(appKey != null && appKey.isNotEmpty),
-        assert(appSecret != null && appSecret.isNotEmpty),
-        assert(universalLink != null && universalLink.isNotEmpty);
+    required this.appKey,
+    required this.appSecret,
+    required this.universalLink,
+  })   : assert(appKey.isNotEmpty),
+        assert(appSecret.isNotEmpty),
+        assert(universalLink.isNotEmpty);
 
   @override
   Map<String, Object> toMap() {
@@ -72,7 +70,7 @@ class UmInitQQ implements UmInitBaseModel {
 class UmInitAliPay implements UmInitBaseModel {
   final String appKey;
 
-  UmInitAliPay({@required this.appKey}) : assert(appKey != null && appKey.isNotEmpty);
+  UmInitAliPay({required this.appKey}) : assert(appKey.isNotEmpty);
 
   @override
   Map<String, Object> toMap() {
@@ -88,7 +86,7 @@ class UmInitAliPay implements UmInitBaseModel {
 class UmInitDingDing implements UmInitBaseModel {
   final String appKey;
 
-  UmInitDingDing({@required this.appKey}) : assert(appKey != null && appKey.isNotEmpty);
+  UmInitDingDing({required this.appKey}) : assert(appKey.isNotEmpty);
 
   @override
   Map<String, Object> toMap() {
@@ -106,9 +104,8 @@ class UmShareWebModel implements UmShareBaseModel {
   final String webUrl;
   final UmShareMedia shareMedia;
 
-  UmShareWebModel(this.webUrl, this.shareMedia, {this.title, this.text, this.img})
-      : assert(webUrl != null && webUrl.isNotEmpty),
-        assert(shareMedia != null);
+  UmShareWebModel(this.webUrl, this.shareMedia, {required this.title, required this.text, required this.img})
+      : assert(webUrl.isNotEmpty);
 
   @override
   Map<String, Object> toMap() {
@@ -128,9 +125,7 @@ class UmShareHttpImgModel implements UmShareBaseModel {
   final String img;
   final UmShareMedia shareMedia;
 
-  UmShareHttpImgModel(this.img, this.shareMedia, {this.text})
-      : assert(img != null && img.isNotEmpty),
-        assert(shareMedia != null);
+  UmShareHttpImgModel(this.img, this.shareMedia, {required this.text}) : assert(img.isNotEmpty);
 
   @override
   Map<String, Object> toMap() {
@@ -148,9 +143,7 @@ class UmShareFileImgModel implements UmShareBaseModel {
   final String fileImg;
   final UmShareMedia shareMedia;
 
-  UmShareFileImgModel(this.fileImg, this.shareMedia, {this.title})
-      : assert(fileImg != null && fileImg.isNotEmpty),
-        assert(shareMedia != null);
+  UmShareFileImgModel(this.fileImg, this.shareMedia, {required this.title}) : assert(fileImg.isNotEmpty);
 
   @override
   Map<String, Object> toMap() {
@@ -167,9 +160,7 @@ class UmShareTextModel implements UmShareBaseModel {
   final String text;
   final UmShareMedia shareMedia;
 
-  UmShareTextModel(this.text, this.shareMedia)
-      : assert(text != null && text.isNotEmpty),
-        assert(shareMedia != null);
+  UmShareTextModel(this.text, this.shareMedia) : assert(text.isNotEmpty);
 
   @override
   Map<String, Object> toMap() {
@@ -188,9 +179,8 @@ class UmShareVideoModel implements UmShareBaseModel {
   final String videoUrl;
   final UmShareMedia shareMedia;
 
-  UmShareVideoModel(this.videoUrl, this.shareMedia, {this.title, this.text, this.img})
-      : assert(videoUrl != null && videoUrl.isNotEmpty),
-        assert(shareMedia != null);
+  UmShareVideoModel(this.videoUrl, this.shareMedia, {required this.title, required this.text, required this.img})
+      : assert(videoUrl.isNotEmpty);
 
   @override
   Map<String, Object> toMap() {
@@ -212,9 +202,8 @@ class UmShareMusicModel implements UmShareBaseModel {
   final String musicUrl;
   final UmShareMedia shareMedia;
 
-  UmShareMusicModel(this.musicUrl, this.shareMedia, {this.title, this.text, this.img})
-      : assert(musicUrl != null && musicUrl.isNotEmpty),
-        assert(shareMedia != null);
+  UmShareMusicModel(this.musicUrl, this.shareMedia, {required this.title, required this.text, required this.img})
+      : assert(musicUrl.isNotEmpty);
 
   @override
   Map<String, Object> toMap() {
