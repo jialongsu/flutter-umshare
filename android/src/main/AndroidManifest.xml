@@ -1,28 +1,39 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.arno.umshare">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET" />
-<!--    <uses-permission android:name="android.permission.READ_LOGS" />-->
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
-    <!-- QQ、QQ空间所需权限 -->
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_ADDED" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_CHANGED" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_INSTALL" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_REPLACED" />
     <uses-permission android:name="android.permission.GET_TASKS" />
-<!--    <uses-permission android:name="android.permission.SET_DEBUG_APP" />-->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <queries>
+        <package android:name="com.tencent.mm" />              //指定微信包名
+        <package android:name="com.tencent.mobileqq" />        //指定qq包名
+        <package android:name="com.sina.weibo" />              //指定微博包名
+        <package android:name="com.tencent.wework" />          //指定企业微信包名
+        <package android:name="com.qzone" />                   //指定QQ空间包名
+        <package android:name="com.alibaba.android.rimet" />   //指定钉钉包名
+        <package android:name="com.eg.android.AlipayGphone" /> //指定支付宝包名
+        <package android:name="com.instagram.android" />       //指定instagram包名
+    </queries>
 
     <application>
+        <!--明确引用org.apache.http.legacy库，避免QQ官方open sdk在Android 9上报错 -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
         <!--    微信，QQ，新浪-->
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -51,7 +62,7 @@
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
-            android:noHistory="true" >
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -63,30 +74,7 @@
         </activity>
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:configChanges="orientation|keyboardHidden|screenSize"/>
-<!--        &lt;!&ndash;     新浪      &ndash;&gt;-->
-<!--        <activity-->
-<!--            android:name="com.umeng.socialize.media.WBShareCallBackActivity"-->
-<!--            android:configChanges="keyboardHidden|orientation"-->
-<!--            android:theme="@android:style/Theme.Translucent.NoTitleBar"-->
-<!--            android:exported="false"-->
-<!--            >-->
-<!--        </activity>-->
-<!--        <activity android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity"-->
-<!--            android:configChanges="keyboardHidden|orientation"-->
-<!--            android:exported="false"-->
-<!--            android:windowSoftInputMode="adjustResize"-->
-<!--        />-->
-<!--        <activity-->
-<!--            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"-->
-<!--            android:launchMode="singleTask"-->
-<!--            android:name="com.sina.weibo.sdk.share.WbShareTransActivity">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />-->
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
     </application>
 

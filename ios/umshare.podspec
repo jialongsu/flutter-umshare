@@ -16,6 +16,7 @@ A new flutter plugin project.
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.dependency 'UMCommon'
+  s.dependency 'UMDevice'
   s.dependency 'UMShare/Social/ReducedQQ'
   s.dependency 'UMShare/Social/ReducedSina'
   s.dependency 'UMShare/Social/AlipayShare'
