@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 
+import com.tencent.tauth.Tencent;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.ShareAction;
@@ -118,6 +119,7 @@ public class UmsharePlugin implements FlutterPlugin, MethodCallHandler, Activity
     final String appKey = (String) params.get("appKey");
     final String channel = (String) params.get("channel");
     final Boolean logEnabled = (Boolean) params.get("logEnabled");
+    UMConfigure.preInit(context, appKey, "umengshare");
     UMConfigure.init(context, appKey, channel, UMConfigure.DEVICE_TYPE_PHONE,"");
     UMConfigure.setLogEnabled(logEnabled != null ? logEnabled : false);
     res.put("code", "200");
@@ -146,9 +148,10 @@ public class UmsharePlugin implements FlutterPlugin, MethodCallHandler, Activity
       String qqAppSecret = config.get("qqAppSecret");
       PlatformConfig.setQQZone(qqAppKey, qqAppSecret);
       PlatformConfig.setQQFileProvider(FileProvider);
+      Tencent.setIsPermissionGranted(true);
     }
 
-    //支付宝678
+    //支付宝
     if(config.containsKey("aliPayAppKey")) {
       String aliPayAppKey = config.get("aliPayAppKey");
       PlatformConfig.setAlipay(aliPayAppKey);

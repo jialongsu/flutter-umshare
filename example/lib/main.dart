@@ -1,3 +1,9 @@
+/*
+ * @Author: Arno.su
+ * @Date: 2021-04-27 14:36:24
+ * @LastEditors: Arno.su
+ * @LastEditTime: 2022-10-26 14:18:58
+ */
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -76,7 +82,7 @@ class _MyAppState extends State<MyApp> {
               ),
               TextButton(
                 onPressed: () async {
-                  var res = await Umshare.auth(UmShareMedia.weiBo);
+                  var res = await Umshare.auth(UmShareMedia.dingDing);
                   print('========登录====res=======$res');
                 },
                 child: Text('登录'),

@@ -1,6 +1,6 @@
 name: umshare
-description: A new flutter plugin project.
-version: 0.2.0
+description: 友盟分享flutter插件，支持Android和ios.
+version: 0.2.2
 # author:
 homepage: https://github.com/1035901787/flutter-umshare
 
