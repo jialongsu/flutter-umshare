@@ -31,20 +31,20 @@ android {
 }
 
 dependencies {
-    implementation 'com.umeng.umsdk:common:9.5.2' // (必选)版本号
+    implementation 'com.umeng.umsdk:common:9.5.4' // (必选)版本号
     implementation 'com.umeng.umsdk:asms:1.6.3' // asms包依赖(必选)
-    implementation  'com.umeng.umsdk:share-core:7.2.1'//分享核心库，必选
+    implementation  'com.umeng.umsdk:share-core:7.3.0'//分享核心库，必选
 
-    implementation  'com.umeng.umsdk:share-qq:7.2.1'//QQ完整版
-    implementation files('libs/open_sdk_3.5.13.83_rc564928_lite.jar') //QQ官方依赖库，必选
+    implementation  'com.umeng.umsdk:share-qq:7.3.0'//QQ完整版
+    implementation files('libs/open_sdk_3.5.14.3_rc26220c_lite.jar') //QQ官方依赖库，必选
 
-    implementation  'com.umeng.umsdk:share-sina:7.2.1'//新浪微博完整版
+    implementation  'com.umeng.umsdk:share-sina:7.3.0'//新浪微博完整版
     implementation 'io.github.sinaweibosdk:core:12.5.0@aar'//新浪微博官方SDK依赖库，必选
 
-    implementation  'com.umeng.umsdk:share-dingding:7.2.1'//钉钉完整版
+    implementation  'com.umeng.umsdk:share-dingding:7.3.0'//钉钉完整版
     implementation  "com.alibaba.android:ddsharesdk:1.2.0@jar"//钉钉官方依赖库，必选
 
-    implementation  'com.umeng.umsdk:share-alipay:7.2.1'//支付宝完整版
+    implementation  'com.umeng.umsdk:share-alipay:7.3.0'//支付宝完整版
     // implementation fileTree(include: ['*.jar'], dir: 'libs')
     // // 显式依赖umeng asms库
     // implementation files('libs/umeng-asms-armeabi-v1.2.2.aar') // asms包依赖(必选)

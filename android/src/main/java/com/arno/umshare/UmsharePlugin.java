@@ -391,12 +391,12 @@ public class UmsharePlugin implements FlutterPlugin, MethodCallHandler, Activity
         return SHARE_MEDIA.TWITTER;
       case 9:
         return SHARE_MEDIA.WEIXIN_FAVORITE;
-      case 10:
-        return SHARE_MEDIA.GOOGLEPLUS;
-      case 11:
-        return SHARE_MEDIA.RENREN;
-      case 12:
-        return SHARE_MEDIA.TENCENT;
+//      case 10:
+//        return SHARE_MEDIA.GOOGLEPLUS;
+//      case 11:
+//        return SHARE_MEDIA.RENREN;
+//      case 12:
+//        return SHARE_MEDIA.TENCENT;
       case 13:
         return SHARE_MEDIA.DOUBAN;
       case 14:
