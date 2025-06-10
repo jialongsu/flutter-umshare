@@ -33,12 +33,16 @@ class _MyAppState extends State<MyApp> {
     String? platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      await Umshare.init('6049a5076ee47d382b7c2e31');
+      await Umshare.init('appKey');
       await Umshare.platformConfig([
         UmInitWeiBo(
-          appKey: '3336474302',
-          appSecret: '37f2e80d470f49b0301aa6a31e0700ea',
+          appKey: 'appKey',
+          appSecret: 'appSecret',
           redirectUrl: 'https://sns.whalecloud.com/sina2/callback',
+        ),
+        UmInitDouYin(
+          appKey: 'appKey',
+          appSecret: 'appSecret',
         ),
       ]);
     } on PlatformException {
@@ -82,14 +86,14 @@ class _MyAppState extends State<MyApp> {
               ),
               TextButton(
                 onPressed: () async {
-                  var res = await Umshare.auth(UmShareMedia.dingDing);
+                  var res = await Umshare.auth(UmShareMedia.douYin);
                   print('========登录====res=======$res');
                 },
                 child: Text('登录'),
               ),
               TextButton(
                 onPressed: () async {
-                  var res = await Umshare.checkInstall(UmShareMedia.dingDing);
+                  var res = await Umshare.checkInstall(UmShareMedia.douYin);
                   print('========检查是否安装应用====dingDing=======$res');
                 },
                 child: Text('检查是否安装应用'),

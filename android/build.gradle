@@ -14,7 +14,8 @@ rootProject.allprojects {
     repositories {
         google()
         jcenter()
-        maven { url "https://dl.bintray.com/thelasterstar/maven/" }
+        maven { url "https://dl.bintray.com/thelasterstar/maven/" } //微博
+        maven { url 'https://artifact.bytedance.com/repository/AwemeOpenSDK' } //抖音
     }
 }
 apply plugin: 'com.android.library'
@@ -52,4 +53,9 @@ dependencies {
 
     //支付宝
     implementation 'com.umeng.umsdk:share-alipay:7.3.3'
+
+    //抖音
+    implementation 'com.bytedance.ies.ugc.aweme:opensdk-china-external:0.1.9.0'
+    implementation 'com.bytedance.ies.ugc.aweme:opensdk-common:0.1.9.0'
+    implementation files('libs/umeng-share-bytedance-7.3.7.jar')
 }

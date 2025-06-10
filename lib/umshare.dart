@@ -46,7 +46,7 @@ class Umshare {
   ///@webUrl 分享网页链接
   ///@videoUrl 分享视频链接
   ///@musicUrl 分享音频链接
-  ///@shareMedia 分享类型：0: QQ, 1: 新浪微博, 4:	QQ空间, 28: 支付宝, 32: 钉钉
+  ///@shareMedia 分享类型：0: QQ, 1: 新浪微博, 4:	QQ空间, 28: 支付宝, 32: 钉钉, 34: 抖音
   ///
   static Future<dynamic> share(UmShareBaseModel model) async {
     Map<dynamic, dynamic> result = await _channel.invokeMethod('umShare', model.toMap());
@@ -54,7 +54,7 @@ class Umshare {
   }
 
   ///登录
-  ///@shareMedia 分享类型：0: QQ, 1: 新浪微博, 4:	QQ空间, 28: 支付宝, 32: 钉钉
+  ///@shareMedia 分享类型：0: QQ, 1: 新浪微博, 4:	QQ空间, 28: 支付宝, 32: 钉钉, 34: 抖音
   ///
   static Future<dynamic> auth(UmShareMedia shareMedia) async {
     Map<dynamic, dynamic> result = await _channel.invokeMethod('umAuth', Utils.getPlatform(shareMedia));
@@ -62,7 +62,7 @@ class Umshare {
   }
 
   ///检查应用是否安装
-  ///@shareMedia 分享类型：0: QQ, 1: 新浪微博, 4:	QQ空间, 28: 支付宝, 32: 钉钉
+  ///@shareMedia 分享类型：0: QQ, 1: 新浪微博, 4:	QQ空间, 28: 支付宝, 32: 钉钉, 34: 抖音
   ///
   static Future<dynamic> checkInstall(UmShareMedia shareMedia) async {
     Map<dynamic, dynamic> result = await _channel.invokeMethod('umCheckInstall', Utils.getPlatform(shareMedia));

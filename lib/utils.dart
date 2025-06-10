@@ -4,6 +4,7 @@ enum UmShareMedia {
   weiBo,
   aliPay,
   dingDing,
+  douYin,
 }
 
 class Utils {
@@ -19,6 +20,8 @@ class Utils {
         return 28;
       case UmShareMedia.dingDing:
         return 32;
+      case UmShareMedia.douYin:
+        return 34;
       default:
         return 0;
     }
@@ -36,6 +39,8 @@ class Utils {
         return UmShareMedia.aliPay;
       case 32:
         return UmShareMedia.dingDing;
+      case 34:
+        return UmShareMedia.douYin;
       default:
         return UmShareMedia.qq;
     }

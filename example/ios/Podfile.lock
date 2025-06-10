@@ -9,6 +9,7 @@ PODS:
     - UMDevice
     - UMShare/Social/AlipayShare
     - UMShare/Social/DingDing
+    - UMShare/Social/DouYin
     - UMShare/Social/ReducedQQ
     - UMShare/Social/ReducedSina
   - UMShare/Core (6.10.3):
@@ -17,6 +18,9 @@ PODS:
     - UMCommon
     - UMShare/Core
   - UMShare/Social/DingDing (6.10.3):
+    - UMCommon
+    - UMShare/Core
+  - UMShare/Social/DouYin (6.10.3):
     - UMCommon
     - UMShare/Core
   - UMShare/Social/ReducedQQ (6.10.3):
@@ -43,12 +47,12 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/umshare/ios"
 
 SPEC CHECKSUMS:
-  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   UMCommon: cf19d0137f91792f181d71f328d5469e1fbf538a
   UMDevice: c883577d50c382a33be6ca3dde25c7ed89298b6c
   UMShare: a3f9cb2d3ece67edd2c58331bd89bfffb289782b
-  umshare: 2a329c2141a69cd1ffc13e59b957178f64a91b2d
+  umshare: dac31c296db1b6e786fdc9f1d9e29b9a045d26e6
 
-PODFILE CHECKSUM: c828106a054d27aae8b2872e20bfd100c5f77425
+PODFILE CHECKSUM: 16bedaff52fc764294f185fa1e489835aa245ca6
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.15.2

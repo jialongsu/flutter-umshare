@@ -22,7 +22,7 @@ class UmInitWeiBo implements UmInitBaseModel {
     required this.appKey,
     required this.appSecret,
     required this.redirectUrl,
-  })   : assert(appKey.isNotEmpty),
+  })  : assert(appKey.isNotEmpty),
         assert(appSecret.isNotEmpty),
         assert(redirectUrl.isNotEmpty);
 
@@ -50,7 +50,7 @@ class UmInitQQ implements UmInitBaseModel {
     required this.appKey,
     required this.appSecret,
     required this.universalLink,
-  })   : assert(appKey.isNotEmpty),
+  })  : assert(appKey.isNotEmpty),
         assert(appSecret.isNotEmpty),
         assert(universalLink.isNotEmpty);
 
@@ -92,6 +92,26 @@ class UmInitDingDing implements UmInitBaseModel {
   Map<String, Object> toMap() {
     return {
       'dingDingAppKey': appKey,
+    };
+  }
+}
+
+///初始抖音
+///@AppKey 钉钉应用 AppKey
+///
+class UmInitDouYin implements UmInitBaseModel {
+  final String appKey;
+  final String appSecret;
+
+  UmInitDouYin({required this.appKey, required this.appSecret})
+      : assert(appKey.isNotEmpty),
+        assert(appSecret.isNotEmpty);
+
+  @override
+  Map<String, Object> toMap() {
+    return {
+      'byteDanceAppKey': appKey,
+      'byteDanceAppSecret': appSecret,
     };
   }
 }

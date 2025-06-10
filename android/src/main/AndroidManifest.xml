@@ -27,6 +27,7 @@
         <package android:name="com.alibaba.android.rimet" />   //指定钉钉包名
         <package android:name="com.eg.android.AlipayGphone" /> //指定支付宝包名
         <package android:name="com.instagram.android" />       //指定instagram包名
+        <package android:name="com.ss.android.ugc.aweme" />  // 指定抖音包名
     </queries>
 
     <application>
@@ -76,6 +77,10 @@
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- 抖音 -->
+        <activity
+            android:name=".douyinapi.DouYinEntryActivity"
+            android:exported="true"/>
 
     </application>
 

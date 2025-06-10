@@ -97,6 +97,8 @@ public class SwiftUmsharePlugin: NSObject, FlutterPlugin {
         return UMSocialPlatformType.dingDing;
       case 33:
         return UMSocialPlatformType.unKnown; // more
+      case 34:
+        return UMSocialPlatformType.douYin;
       default:
         return UMSocialPlatformType.QQ;
     }
@@ -170,6 +172,7 @@ public class SwiftUmsharePlugin: NSObject, FlutterPlugin {
     public func platformConfig(call: FlutterMethodCall, result: @escaping FlutterResult) {
         let params = call.arguments as! Dictionary<String, String>;
         let keys = params.keys;
+        let uMSocialManager = UMSocialManager.default();
         
         //初始化 UniversalLink
         if(keys.contains("qqUniversalLink")) {
@@ -180,22 +183,27 @@ public class SwiftUmsharePlugin: NSObject, FlutterPlugin {
         
         //QQ
         if(keys.contains("qqAppSecret") && keys.contains("qqAppKey")) {
-            UMSocialManager.default()?.setPlaform(UMSocialPlatformType.QQ, appKey: params["qqAppKey"], appSecret: params["qqAppSecret"], redirectURL: "http://mobile.umeng.com/social")
+            uMSocialManager?.setPlaform(UMSocialPlatformType.QQ, appKey: params["qqAppKey"], appSecret: params["qqAppSecret"], redirectURL: "http://mobile.umeng.com/social")
         }
         
         //新浪微博
         if(keys.contains("sinaWeiboAppKey") && keys.contains("sinaWeiboAppSecret")) {
-            UMSocialManager.default()?.setPlaform(UMSocialPlatformType.sina, appKey: params["sinaWeiboAppKey"], appSecret: params["sinaWeiboAppSecret"], redirectURL: params["redirectUrl"])
+            uMSocialManager?.setPlaform(UMSocialPlatformType.sina, appKey: params["sinaWeiboAppKey"], appSecret: params["sinaWeiboAppSecret"], redirectURL: params["redirectUrl"])
         }
 
         //支付宝
         if(keys.contains("aliPayAppKey")) {
-            UMSocialManager.default()?.setPlaform(UMSocialPlatformType.sina, appKey: params["aliPayAppKey"], appSecret: nil, redirectURL: "http://mobile.umeng.com/social")
+            uMSocialManager?.setPlaform(UMSocialPlatformType.sina, appKey: params["aliPayAppKey"], appSecret: nil, redirectURL: "http://mobile.umeng.com/social")
         }
         
         //钉钉
         if(keys.contains("dingDingAppKey")) {
-            UMSocialManager.default()?.setPlaform(UMSocialPlatformType.sina, appKey: params["dingDingAppKey"], appSecret: nil, redirectURL: nil)
+            uMSocialManager?.setPlaform(UMSocialPlatformType.sina, appKey: params["dingDingAppKey"], appSecret: nil, redirectURL: nil)
+        }
+
+        //抖音
+        if(keys.contains("byteDanceAppKey") && keys.contains("byteDanceAppSecret")) {
+            uMSocialManager?.setPlaform(UMSocialPlatformType.douYin, appKey: params["byteDanceAppKey"], appSecret: params["byteDanceAppSecret"], redirectURL:nil)
         }
         
         result(["code": "200", "msg": "set platformConfig success"]);

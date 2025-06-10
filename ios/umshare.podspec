@@ -21,6 +21,7 @@ A new flutter plugin project.
   s.dependency 'UMShare/Social/ReducedSina'
   s.dependency 'UMShare/Social/AlipayShare'
   s.dependency 'UMShare/Social/DingDing'
+  s.dependency 'UMShare/Social/DouYin'
   s.platform = :ios, '8.0'
   s.static_framework = true
 

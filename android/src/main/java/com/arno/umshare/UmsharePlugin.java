@@ -163,6 +163,13 @@ public class UmsharePlugin implements FlutterPlugin, MethodCallHandler, Activity
       PlatformConfig.setDing(dingDingAppKey);
     }
 
+    //抖音
+    if(config.containsKey("byteDanceAppKey") && config.containsKey("byteDanceAppSecret")) {
+      String byteDanceAppKey = config.get("byteDanceAppKey");
+      String byteDanceAppSecret = config.get("byteDanceAppSecret");
+      PlatformConfig.setBytedance(byteDanceAppKey, byteDanceAppKey, byteDanceAppSecret, FileProvider);
+    }
+
     res.put("code", "200");
     res.put("msg", "set platformConfig success");
     result.success(res);
@@ -439,6 +446,8 @@ public class UmsharePlugin implements FlutterPlugin, MethodCallHandler, Activity
         return SHARE_MEDIA.DINGTALK;
       case 33:
         return SHARE_MEDIA.MORE;
+      case 34:
+        return SHARE_MEDIA.BYTEDANCE;
       default:
         return SHARE_MEDIA.QQ;
     }
