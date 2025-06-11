@@ -80,7 +80,16 @@
         <!-- 抖音 -->
         <activity
             android:name=".douyinapi.DouYinEntryActivity"
-            android:exported="true"/>
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity="${applicationId}"/>
+
+        <activity-alias
+            android:name="${applicationId}.douyinapi.DouYinEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:targetActivity="com.arno.umshare.douyinapi.DouYinEntryActivity"
+            android:taskAffinity="${applicationId}"/>
 
     </application>
 
