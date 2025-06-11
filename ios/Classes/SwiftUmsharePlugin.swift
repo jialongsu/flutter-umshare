@@ -1,11 +1,12 @@
 import Flutter
 import UIKit
 
-public class SwiftUmsharePlugin: NSObject, FlutterPlugin {
+public class SwiftUmsharePlugin: NSObject, FlutterPlugin, UIApplicationDelegate {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "umshare", binaryMessenger: registrar.messenger())
     let instance = SwiftUmsharePlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
+    registrar.addApplicationDelegate(instance);
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -282,19 +283,19 @@ public class SwiftUmsharePlugin: NSObject, FlutterPlugin {
             } else {
                 let authInfo = res as! UMSocialUserInfoResponse;
                 let originInfo = authInfo.originalResponse as! Dictionary<String, Any>;
-                var retDict = Dictionary<String, Any>();
-                retDict["uid"] = authInfo.uid;
-                retDict["openid"] = authInfo.openid;
-                retDict["unionId"] = authInfo.unionId;
-                retDict["accessToken"] = authInfo.accessToken;
-                retDict["refreshToken"] = authInfo.refreshToken;
-                retDict["expiration"] = authInfo.expiration;
-                retDict["name"] = authInfo.name;
-                retDict["iconurl"] = authInfo.iconurl;
-                retDict["city"] = originInfo["city"];
-                retDict["province"] = originInfo["province"];
-                retDict["country"] = originInfo["country"];
-                result(["code": 200, "msg": "share success", "data": retDict]);
+                // retDict["uid"] = authInfo.uid;
+                // retDict["openid"] = authInfo.openid;
+                // retDict["unionId"] = authInfo.unionId;
+                // retDict["accessToken"] = authInfo.accessToken;
+                // retDict["refreshToken"] = authInfo.refreshToken;
+                // retDict["expiration"] = authInfo.expiration;
+                // retDict["name"] = authInfo.name;
+                // retDict["iconurl"] = authInfo.iconurl;
+                // retDict["city"] = originInfo["city"];
+                // retDict["province"] = originInfo["province"];
+                // retDict["country"] = originInfo["country"];
+                
+                result(["code": 200, "msg": "share success", "data": originInfo]);
             }
         })
     }
@@ -312,33 +313,46 @@ public class SwiftUmsharePlugin: NSObject, FlutterPlugin {
         
     }
     
-    ///系统回调
-//    public override func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
-//        let result = UMSocialManager.default().handleOpen(url)
-//        if !result {
-//            // 其他如支付等SDK的回调
-//        }
-//        print("回调=====新的====3333")
-//        return result
-//    }
-//
-//    public override func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-//        //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响
-//        let result = UMSocialManager.default().handleOpen(url, options: options)
-//        if !result {
-//            // 其他如支付等SDK的回调
-//        }
-//        print("回调=====新的====2222")
-//        return result
-//    }
-//
-//    public override func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-//        let result = UMSocialManager.default().handleOpen(url, sourceApplication: sourceApplication, annotation: annotation)
-//        if !result {
-//            // 其他如支付等SDK的回调
-//        }
-//        print("回调====新的=====11111")
-//        return result
-//    }
+    // MARK: - iOS 9.0+ 推荐使用的方法（新版 API）
+   @available(iOS 9.0, *)
+   public func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+       let result = UMSocialManager.default().handleOpen(url, options: options)
+       if !result {
+           // 其他 SDK 的回调（如微信、支付宝等）
+           print("UMShare 未处理该 URL")
+       }
+       return result
+   }
+
+   // MARK: - iOS 8.0+ 兼容方法（旧版 API）
+   public func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+       let result = UMSocialManager.default().handleOpen(url, sourceApplication: sourceApplication, annotation: annotation)
+       if !result {
+           // 其他 SDK 的回调
+           print("UMShare 未处理该 URL")
+       }
+       return result
+   }
+
+   // MARK: - 更老版本兼容（iOS 7 及以下，已弃用）
+   public func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
+       let result = UMSocialManager.default().handleOpen(url)
+       if !result {
+           // 其他 SDK 的回调
+           print("UMShare 未处理该 URL")
+       }
+       return result
+   }
+
+   // MARK: - Universal Links 处理（iOS 9+）
+    @nonobjc @available(iOS 9.0, *)
+   public func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+       let result = UMSocialManager.default().handleUniversalLink(userActivity, options: nil)
+       if !result {
+           // 其他 SDK 的回调
+           print("UMShare 未处理该 Universal Link")
+       }
+       return result
+   }
 
 }

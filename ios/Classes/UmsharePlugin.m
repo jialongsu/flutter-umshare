@@ -10,49 +10,46 @@
 
 @implementation UmsharePlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  [SwiftUmsharePlugin registerWithRegistrar:registrar];
+    [SwiftUmsharePlugin registerWithRegistrar:registrar];
 }
 
 // 支持所有iOS系统
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响
-    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
-    if (!result) {
-         // 其他如支付等SDK的回调
-    }
-    NSLog(@"1--1-1-1-1--1--1--1-===调用这里==11");
-    return result;
-}
-
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
-{
-    //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响
-    BOOL result = [[UMSocialManager defaultManager]  handleOpenURL:url options:options];
-    if (!result) {
-        // 其他如支付等SDK的回调
-    }
-    NSLog(@"1--1-1-1-1--1--1--1-===调用这里==22");
-    return result;
-}
-
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
-{
-    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
-    if (!result) {
-        // 其他如支付等SDK的回调
-    }
-    NSLog(@"1--1-1-1-1--1--1--1-===调用这里==33");
-    return result;
-}
-
-- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void(^)(NSArray * __nullable restorableObjects))restorationHandler
-{
-    if (![[UMSocialManager defaultManager] handleUniversalLink:userActivity options:nil]) {
-        // 其他SDK的回调
-    }
-    NSLog(@"1--1-1-1-1--1--1--1-===调用这里==44");
-    return YES;
-}
+//-(BOOL)application:(UIApplication*)application openURL:(NSURL *)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation
+//{
+//    //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响
+//    BOOL result =[[UMSocialManager defaultManager] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
+//    if(!result){
+//        // 其他如支付等SDK的回调
+//    }
+//    return result;
+//}
+//
+//-(BOOL)application:(UIApplication*)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id>*)options
+//{
+//    //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响
+//    BOOL result =[[UMSocialManager defaultManager]  handleOpenURL:url options:options];
+//    if(!result){
+//        // 其他如支付等SDK的回调
+//    }
+//    return result;
+//}
+//
+//
+//-(BOOL)application:(UIApplication*)application handleOpenURL:(NSURL *)url
+//{
+//    BOOL result =[[UMSocialManager defaultManager] handleOpenURL:url];
+//    if(!result){
+//        // 其他如支付等SDK的回调
+//    }
+//    return result;
+//}
+//
+//-(BOOL)application:(UIApplication*)application continueUserActivity:(NSUserActivity*)userActivity restorationHandler:(void(^)(NSArray* __nullable restorableObjects))restorationHandler
+//{
+//    if(![[UMSocialManager defaultManager] handleUniversalLink:userActivity options:nil]){
+//        // 其他SDK的回调
+//    }
+//    return YES;
+//}
 
 @end
