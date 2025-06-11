@@ -18,7 +18,7 @@ class Umshare {
   ///@logEnabled 是否开启日志
   ///在调用所有方法前必须调用
   ///
-  static Future<dynamic> init(String appKey, [String channel = "umengshare", bool logEnabled = false]) async {
+  static Future<dynamic> init(String appKey, {String channel = "umengshare", bool logEnabled = false}) async {
     Map<dynamic, dynamic> result = await _channel.invokeMethod('umInit', {
       "appKey": appKey,
       "channel": channel,
