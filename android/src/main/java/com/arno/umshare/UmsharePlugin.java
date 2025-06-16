@@ -266,9 +266,11 @@ public class UmsharePlugin implements FlutterPlugin, MethodCallHandler, Activity
           @Override
           public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
             Map<String, Object> params = new HashMap<>();
-            for (String key:map.keySet()){
-              params.put(key,map.get(key));
-            }
+            params.put("code", 200);
+            params.put("data", map);
+            // for (String key:map.keySet()){
+            //   params.put(key,map.get(key));
+            // }
             result.success(params);
           }
 
