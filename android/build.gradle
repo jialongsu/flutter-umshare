@@ -42,10 +42,10 @@ dependencies {
     implementation files('libs/open_sdk_3.5.14.4_r377deaa_lite.jar')
 
     //新浪微博
-    implementation('io.github.sinaweibosdk:core:13.10.0') {
+    implementation('io.github.sinaweibosdk:core:13.10.1') {
         exclude module: 'unspecified'
     }
-    implementation 'com.umeng.umsdk:share-sina:7.3.3'
+    implementation 'com.umeng.umsdk:share-sina:+'
 
     //钉钉
     implementation 'com.alibaba.android:ddsharesdk:1.2.2'
