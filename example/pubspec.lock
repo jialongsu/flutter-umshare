@@ -209,7 +209,7 @@ packages:
     source: hosted
     version: "1.9.0"
   path_provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       path: "packages/path_provider/path_provider"
       ref: HEAD
@@ -349,7 +349,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.5.1"
+    version: "0.6.0"
   vector_math:
     dependency: transitive
     description:
