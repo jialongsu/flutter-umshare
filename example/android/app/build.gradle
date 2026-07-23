@@ -29,9 +29,9 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
-        // 供库模块 Manifest 中 ${qqappid} 替换 (QQ 分享/登录 scheme)。实际项目中把 tencent100424468 换成你真实的 QQ AppID 前加 tencent 前缀。
+        // 供库模块 Manifest 中 ${qqappid} 替换 (QQ 分享/登录 scheme)。实际项目中把 tencentxxxxx 换成你真实的 QQ AppID 前加 tencent 前缀。
         manifestPlaceholders += [
-                qqappid: "tencent100424468"
+                qqappid: "tencentxxxxx"
         ]
     }
 
