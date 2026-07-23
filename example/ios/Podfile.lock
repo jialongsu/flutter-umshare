@@ -1,8 +1,37 @@
 PODS:
   - Flutter (1.0.0)
-  - UMCommon (7.3.3):
+  - flutter_image_compress_common (1.0.0):
+    - Flutter
+    - Mantle
+    - SDWebImage
+    - SDWebImageWebPCoder
+  - libwebp (1.5.0):
+    - libwebp/demux (= 1.5.0)
+    - libwebp/mux (= 1.5.0)
+    - libwebp/sharpyuv (= 1.5.0)
+    - libwebp/webp (= 1.5.0)
+  - libwebp/demux (1.5.0):
+    - libwebp/webp
+  - libwebp/mux (1.5.0):
+    - libwebp/demux
+  - libwebp/sharpyuv (1.5.0)
+  - libwebp/webp (1.5.0):
+    - libwebp/sharpyuv
+  - Mantle (2.2.0):
+    - Mantle/extobjc (= 2.2.0)
+  - Mantle/extobjc (2.2.0)
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - SDWebImage (5.21.2):
+    - SDWebImage/Core (= 5.21.2)
+  - SDWebImage/Core (5.21.2)
+  - SDWebImageWebPCoder (0.14.6):
+    - libwebp (~> 1.0)
+    - SDWebImage/Core (~> 5.17)
+  - UMCommon (7.5.3):
     - UMDevice
-  - UMDevice (2.0.2)
+  - UMDevice (3.4.0)
   - umshare (0.0.1):
     - Flutter
     - UMCommon
@@ -32,10 +61,16 @@ PODS:
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
+  - flutter_image_compress_common (from `.symlinks/plugins/flutter_image_compress_common/ios`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - umshare (from `.symlinks/plugins/umshare/ios`)
 
 SPEC REPOS:
   trunk:
+    - libwebp
+    - Mantle
+    - SDWebImage
+    - SDWebImageWebPCoder
     - UMCommon
     - UMDevice
     - UMShare
@@ -43,16 +78,26 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
+  flutter_image_compress_common:
+    :path: ".symlinks/plugins/flutter_image_compress_common/ios"
+  path_provider_foundation:
+    :path: ".symlinks/plugins/path_provider_foundation/darwin"
   umshare:
     :path: ".symlinks/plugins/umshare/ios"
 
 SPEC CHECKSUMS:
-  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  UMCommon: cf19d0137f91792f181d71f328d5469e1fbf538a
-  UMDevice: c883577d50c382a33be6ca3dde25c7ed89298b6c
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  flutter_image_compress_common: 1697a328fd72bfb335507c6bca1a65fa5ad87df1
+  libwebp: 02b23773aedb6ff1fd38cec7a77b81414c6842a8
+  Mantle: c5aa8794a29a022dfbbfc9799af95f477a69b62d
+  path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
+  SDWebImage: 9f177d83116802728e122410fb25ad88f5c7608a
+  SDWebImageWebPCoder: e38c0a70396191361d60c092933e22c20d5b1380
+  UMCommon: 3b850836e8bc162b4e7f6b527d30071ed8ea75a1
+  UMDevice: dcdf7ec167387837559d149fbc7d793d984faf82
   UMShare: a3f9cb2d3ece67edd2c58331bd89bfffb289782b
-  umshare: dac31c296db1b6e786fdc9f1d9e29b9a045d26e6
+  umshare: 5ce79c334f2a074946bb06d8dbf14b1ba823903b
 
-PODFILE CHECKSUM: 16bedaff52fc764294f185fa1e489835aa245ca6
+PODFILE CHECKSUM: e5c75849cc6878a0cdbeae5f786cdb05e1a24f17
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

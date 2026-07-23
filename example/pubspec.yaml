@@ -26,10 +26,31 @@ dependencies:
 
   umshare:
     path: ../
+    
+  path_provider:
+    git:
+      url: "https://gitcode.com/openharmony-sig/flutter_packages.git"
+      path: "packages/path_provider/path_provider"
+
+  http: ^1.5.0
+
+  # path_provider:
+  #   git:
+  #     url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
+  #     path: "packages/path_provider/path_provider"
+      
+  # path_provider:
+  #   git:
+  #     url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
+  #     ref: "br_path_provider-v2.1.5_ohos"
+  #     path: "packages/path_provider/path_provider"
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+
+  flutter_image_compress: ^2.4.0
 
 dev_dependencies:
   flutter_test:
@@ -37,6 +58,20 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+
+dependency_overrides:
+  # path_provider:
+  #   git:
+  #     url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
+  #     ref: "br_path_provider-v2.1.5_ohos"
+  #     path: "packages/path_provider/path_provider"
+
+  
+  # path_provider:
+  #   git:
+  #     url: "https://gitee.com/cjn629/flutter_packages.git"
+  #     ref: "gkd"
+  #     path: "packages/path_provider/path_provider"
 
 # The following section is specific to Flutter.
 flutter:

@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "umshare",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

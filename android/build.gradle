@@ -3,9 +3,8 @@ version '1.0'
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
-
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.0'
     }
@@ -13,14 +12,15 @@ buildscript {
 rootProject.allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         maven { url "https://dl.bintray.com/thelasterstar/maven/" } //微博
         maven { url 'https://artifact.bytedance.com/repository/AwemeOpenSDK' } //抖音
     }
 }
 apply plugin: 'com.android.library'
 android {
-    compileSdkVersion 29
+    compileSdkVersion 34
+    namespace 'com.arno.umshare'
 
     defaultConfig {
         minSdkVersion 16
@@ -34,8 +34,11 @@ android {
 dependencies {
     implementation 'com.umeng.umsdk:common:9.6.4' // (必选)版本号
     implementation 'com.umeng.umsdk:asms:1.8.0' // asms包依赖(必选)
-    implementation  'com.umeng.umsdk:share-core:7.3.3'//分享核心库，必选
-    implementation 'com.android.support:support-v4:25.0.0' //友盟分享依赖v4包
+    implementation 'com.umeng.umsdk:share-core:7.3.3' //分享核心库，必选
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'com.google.android.play:core:1.10.3'
 
     //QQ
     implementation  'com.umeng.umsdk:share-qq:7.3.3'

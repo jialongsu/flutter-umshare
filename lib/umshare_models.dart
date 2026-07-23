@@ -102,16 +102,19 @@ class UmInitDingDing implements UmInitBaseModel {
 class UmInitDouYin implements UmInitBaseModel {
   final String appKey;
   final String appSecret;
+  final String redirectUrl;
 
-  UmInitDouYin({required this.appKey, required this.appSecret})
+  UmInitDouYin({required this.appKey, required this.appSecret, required this.redirectUrl})
       : assert(appKey.isNotEmpty),
-        assert(appSecret.isNotEmpty);
+        assert(appSecret.isNotEmpty),
+        assert(redirectUrl.isNotEmpty);
 
   @override
   Map<String, Object> toMap() {
     return {
       'byteDanceAppKey': appKey,
       'byteDanceAppSecret': appSecret,
+      'byteDanceRedirectUrl': redirectUrl,
     };
   }
 }

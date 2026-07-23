@@ -1,0 +1,21 @@
+{
+  "name": "umshare",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "index.ets",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@ohos/flutter_ohos": "file:./har/flutter.har",
+    "@umeng/common": "1.1.3",
+    "@umeng/analytics": "1.2.4",
+    "@umeng/share": "1.1.3",
+    "@douyin/opensdk-common-external": "0.0.5",
+    "@tencent/qq-open-sdk": "^1.0.3",
+    "@zyl/weibo_har": "1.0.2",
+    "@cashier_alipay/cashiersdk": "^15.8.37",
+    "@tencent/wechat_open_sdk": "1.0.14",
+    "@dingtalk/ddsharesdk": "./libs/ddsharesdk.har", 
+    "@ohos/imageknife": "3.2.7"
+  }
+}

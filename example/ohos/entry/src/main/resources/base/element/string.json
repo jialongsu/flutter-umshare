@@ -1,0 +1,20 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "umshare_example"
+    },
+    {
+      "name": "app_tracking_desc",
+      "value": "需要获取手机标识"
+    }
+  ]
+}
