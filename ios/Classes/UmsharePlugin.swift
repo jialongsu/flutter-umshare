@@ -1,12 +1,13 @@
 import Flutter
 import UIKit
 
-public class UmsharePlugin: NSObject, FlutterPlugin, UIApplicationDelegate {
+public class UmsharePlugin: NSObject, FlutterPlugin, UIApplicationDelegate, FlutterSceneLifeCycleDelegate {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "umshare", binaryMessenger: registrar.messenger())
     let instance = UmsharePlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
     registrar.addApplicationDelegate(instance);
+    registrar.addSceneDelegate(instance);
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -354,5 +355,23 @@ public class UmsharePlugin: NSObject, FlutterPlugin, UIApplicationDelegate {
        }
        return result
    }
+
+    // MARK: - UIScene 生命周期回调（Flutter 3.38.0+）
+    public func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) -> Bool {
+        guard let url = URLContexts.first?.url else { return false }
+        let result = UMSocialManager.default().handleOpen(url, options: [:])
+        if !result {
+            print("UMShare 未处理该 Scene URL")
+        }
+        return result
+    }
+
+    public func scene(_ scene: UIScene, continue userActivity: NSUserActivity) -> Bool {
+        let result = UMSocialManager.default().handleUniversalLink(userActivity, options: nil)
+        if !result {
+            print("UMShare 未处理该 Scene Universal Link")
+        }
+        return result
+    }
 
 }
