@@ -5,19 +5,18 @@
  * @LastEditTime: 2022-10-26 14:18:58
  */
 import 'dart:async';
+import 'dart:io';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
-import 'package:umshare/umshare.dart';
-
-import 'dart:io';
-import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:path_provider/path_provider.dart';
+import 'package:umshare/umshare.dart';
 
 void main() {
   runApp(MyApp());
@@ -43,7 +42,7 @@ class _MyAppState extends State<MyApp> {
     String? platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      await Umshare.init("60519766b8c8d45c13a16fa0");
+      await Umshare.init("UmKey");
       // await Umshare.platformConfig([
       //   UmInitWeiBo(
       //     appKey: 'appKey',
@@ -56,22 +55,10 @@ class _MyAppState extends State<MyApp> {
       //   ),
       // ]);
       await Umshare.platformConfig([
-        UmInitWeiBo(
-          appKey: 'appKey',
-          appSecret: 'appSecret',
-          redirectUrl: 'https://sns.whalecloud.com/sina2/callback',
-        ),
-        UmInitAliPay(
-          appKey: 'appKey',
-        ),
-        UmInitDingDing(
-          appKey: 'appKey',
-        ),
-        UmInitDouYin(
-          appKey: 'awyaxo8a90dogqyf',
-          appSecret: '33e83f060a13a24a599c5a5559d83927',
-          redirectUrl: 'https://demo.910728.xyz/path',
-        )
+        UmInitWeiBo(appKey: 'appKey', appSecret: 'appSecret', redirectUrl: 'https://sns.whalecloud.com/sina2/callback'),
+        UmInitAliPay(appKey: 'appKey'),
+        UmInitDingDing(appKey: 'appKey'),
+        UmInitDouYin(appKey: 'appKey', appSecret: 'appSecret', redirectUrl: 'https://demo.910728.xyz/path'),
       ]);
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
@@ -91,171 +78,145 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Plugin example app'),
-          ),
-          body: RepaintBoundary(
-            key: _globalKey,
-            child: Container(
-              width: double.infinity,
-              color: Colors.white,
-              child: Column(
-                children: [
-                  TextButton(
-                    onPressed: () async {
-                      await Umshare.init('appKey',
-                          channel: 'umengshare', logEnabled: true);
-                      print('========初始化========');
-                    },
-                    child: Text('init'),
-                  ),
-                  TextButton(
-                    onPressed: () async {
-                      await Umshare.platformConfig([
-                        UmInitWeiBo(
-                          appKey: 'appKey',
-                          appSecret: 'appSecret',
-                          redirectUrl:
-                              'https://sns.whalecloud.com/sina2/callback',
-                        ),
-                        UmInitAliPay(
-                          appKey: 'appKey',
-                        ),
-                        UmInitDingDing(
-                          appKey: 'appKey',
-                        ),
-                        UmInitDouYin(
-                          appKey: 'awyaxo8a90dogqyf',
-                          appSecret: '33e83f060a13a24a599c5a5559d83927',
-                          redirectUrl: 'https://miniapp.livelab.com.cn/path',
-                        )
-                      ]);
-                    },
-                    child: Text('platformConfig'),
-                  ),
-                  TextButton(
-                    onPressed: () async {
-                      // var res = await Umshare.share(UmShareWebModel(
-                      //   'https://www.baidu.com',
-                      //   UmShareMedia.weiBo,
-                      //   title: 'demo',
-                      //   text: 'test-----',
-                      //   img: 'https://dss1.bdstatic.com/kvoZeXSm1A5BphGlnYG/skin_zoom/320.jpg',
-                      // ));
-                      // print('========结果=========$res');
+        appBar: AppBar(title: const Text('Plugin example app')),
+        body: RepaintBoundary(
+          key: _globalKey,
+          child: Container(
+            width: double.infinity,
+            color: Colors.white,
+            child: Column(
+              children: [
+                TextButton(
+                  onPressed: () async {
+                    await Umshare.init('appKey', channel: 'umengshare', logEnabled: true);
+                    print('========初始化========');
+                  },
+                  child: Text('init'),
+                ),
+                TextButton(
+                  onPressed: () async {
+                    await Umshare.platformConfig([
+                      UmInitWeiBo(
+                        appKey: 'appKey',
+                        appSecret: 'appSecret',
+                        redirectUrl: 'https://sns.whalecloud.com/sina2/callback',
+                      ),
+                      UmInitAliPay(appKey: 'appKey'),
+                      UmInitDingDing(appKey: 'appKey'),
+                      UmInitDouYin(
+                        appKey: 'awyaxo8a90dogqyf',
+                        appSecret: '33e83f060a13a24a599c5a5559d83927',
+                        redirectUrl: 'https://miniapp.livelab.com.cn/path',
+                      ),
+                    ]);
+                  },
+                  child: Text('platformConfig'),
+                ),
+                TextButton(
+                  onPressed: () async {
+                    // var res = await Umshare.share(UmShareWebModel(
+                    //   'https://www.baidu.com',
+                    //   UmShareMedia.weiBo,
+                    //   title: 'demo',
+                    //   text: 'test-----',
+                    //   img: 'https://dss1.bdstatic.com/kvoZeXSm1A5BphGlnYG/skin_zoom/320.jpg',
+                    // ));
+                    // print('========结果=========$res');
 
-                      // var res = await Umshare.share(UmShareHttpImgModel(
-                      //   'https://dss1.bdstatic.com/kvoZeXSm1A5BphGlnYG/skin_zoom/320.jpg',
-                      //   UmShareMedia.qq,
-                      //   text: 'test-----',
-                      // ));
-                      // print('========结果=========$res');
+                    // var res = await Umshare.share(UmShareHttpImgModel(
+                    //   'https://dss1.bdstatic.com/kvoZeXSm1A5BphGlnYG/skin_zoom/320.jpg',
+                    //   UmShareMedia.qq,
+                    //   text: 'test-----',
+                    // ));
+                    // print('========结果=========$res');
 
-                      var res = await Umshare.share(UmShareFileImgModel(
+                    var res = await Umshare.share(
+                      UmShareFileImgModel(
                         'https://dss1.bdstatic.com/kvoZeXSm1A5BphGlnYG/skin_zoom/320.jpg',
                         UmShareMedia.weiBo,
                         title: 'test-----',
-                      ));
-                      print('========结果=========$res');
-                    },
-                    child: Text('分享'),
-                  ),
-                  TextButton(
-                    onPressed: () async {
-                      try {
-                        var res = await Umshare.auth(UmShareMedia.douYin);
-                        print('========登录====res=======$res');
-                      } catch (e) {
-                        print('========登录====error=======$e');
-                      }
-                    },
-                    child: Text('登录抖音'),
-                  ),
-                  TextButton(
-                    onPressed: () async {
-                      try {
-                        var res = await Umshare.auth(UmShareMedia.weiBo);
-                        print('========登录====res=======$res');
-                      } catch (e) {
-                        print('========登录====error=======$e');
-                      }
-                    },
-                    child: Text('登录微博'),
-                  ),
-                  TextButton(
-                    onPressed: () async {
-                      var checkInstallRes =
-                          await Umshare.checkInstall(UmShareMedia.weiBo);
-                      print(checkInstallRes["isInstall"]);
-                      print(
-                          '========检查是否安装应用====douYin=======${await Umshare.checkInstall(UmShareMedia.douYin)}');
-                      print(
-                          '========检查是否安装应用====qq=======${await Umshare.checkInstall(UmShareMedia.qq)}');
-                      print(
-                          '========检查是否安装应用====weiBo=======${await Umshare.checkInstall(UmShareMedia.weiBo)}');
-                      print(
-                          '========检查是否安装应用====dingDing=======${await Umshare.checkInstall(UmShareMedia.dingDing)}');
-                      print(
-                          '========检查是否安装应用====aliPay=======${await Umshare.checkInstall(UmShareMedia.aliPay)}');
-                    },
-                    child: Text('检查是否安装应用'),
-                  ),
-                  TextButton(
-                    onPressed: () async {
+                      ),
+                    );
+                    print('========结果=========$res');
+                  },
+                  child: Text('分享'),
+                ),
+                TextButton(
+                  onPressed: () async {
+                    try {
+                      var res = await Umshare.auth(UmShareMedia.douYin);
+                      print('========登录====res=======$res');
+                    } catch (e) {
+                      print('========登录====error=======$e');
+                    }
+                  },
+                  child: Text('登录抖音'),
+                ),
+                TextButton(
+                  onPressed: () async {
+                    try {
+                      var res = await Umshare.auth(UmShareMedia.weiBo);
+                      print('========登录====res=======$res');
+                    } catch (e) {
+                      print('========登录====error=======$e');
+                    }
+                  },
+                  child: Text('登录微博'),
+                ),
+                TextButton(
+                  onPressed: () async {
+                    var checkInstallRes = await Umshare.checkInstall(UmShareMedia.weiBo);
+                    print(checkInstallRes["isInstall"]);
+                    print('========检查是否安装应用====douYin=======${await Umshare.checkInstall(UmShareMedia.douYin)}');
+                    print('========检查是否安装应用====qq=======${await Umshare.checkInstall(UmShareMedia.qq)}');
+                    print('========检查是否安装应用====weiBo=======${await Umshare.checkInstall(UmShareMedia.weiBo)}');
+                    print('========检查是否安装应用====dingDing=======${await Umshare.checkInstall(UmShareMedia.dingDing)}');
+                    print('========检查是否安装应用====aliPay=======${await Umshare.checkInstall(UmShareMedia.aliPay)}');
+                  },
+                  child: Text('检查是否安装应用'),
+                ),
+                TextButton(
+                  onPressed: () async {
+                    String localPath = await downloadAndSaveImage(
+                      'https://dss1.bdstatic.com/kvoZeXSm1A5BphGlnYG/skin_zoom/320.jpg',
+                    );
+                    print(localPath);
+                    var res = await Umshare.share(UmShareFileImgModel(localPath, UmShareMedia.weiBo, title: 'test-----'));
+                    print('========结果=========$res');
+                  },
+                  child: Text('先下载压缩后分享'),
+                ),
+                TextButton(
+                  onPressed: () async {
+                    try {
                       String localPath = await downloadAndSaveImage(
-                          'https://dss1.bdstatic.com/kvoZeXSm1A5BphGlnYG/skin_zoom/320.jpg');
+                        'https://dss1.bdstatic.com/kvoZeXSm1A5BphGlnYG/skin_zoom/326.jpg',
+                      );
                       print(localPath);
-                      var res = await Umshare.share(UmShareFileImgModel(
-                        localPath,
-                        UmShareMedia.weiBo,
-                        title: 'test-----',
-                      ));
+                      var res = await Umshare.share(UmShareFileImgModel(localPath, UmShareMedia.weiBo, title: 'test-----'));
                       print('========结果=========$res');
-                    },
-                    child: Text('先下载压缩后分享'),
-                  ),
-                  TextButton(
-                    onPressed: () async {
-                      try {
-                        String localPath = await downloadAndSaveImage(
-                            'https://dss1.bdstatic.com/kvoZeXSm1A5BphGlnYG/skin_zoom/326.jpg');
-                        print(localPath);
-                        var res = await Umshare.share(UmShareFileImgModel(
-                          localPath,
-                          UmShareMedia.weiBo,
-                          title: 'test-----',
-                        ));
-                        print('========结果=========$res');
-                      } catch (e) {
-                        print('下载图片失败: $e');
-                      }
-                    },
-                    child: Text('分享网络图片'),
-                  ),
-                  TextButton(
-                    onPressed: () async {
-                      RenderRepaintBoundary boundary =
-                          _globalKey.currentContext!.findRenderObject()
-                              as RenderRepaintBoundary;
-                      ui.Image image = await boundary.toImage(
-                          pixelRatio: View.of(context).devicePixelRatio);
-                      ByteData byteData = await image.toByteData(
-                          format: ui.ImageByteFormat.png) as ByteData;
-                      Uint8List pngBytes = byteData.buffer.asUint8List();
-                      File file =
-                          await saveToLocal(pngBytes, 'shareTicket.png');
-                      Umshare.share(UmShareFileImgModel(
-                        file.path,
-                        UmShareMedia.weiBo,
-                        title: 'test-----',
-                      ));
-                    },
-                    child: Text('分享截图'),
-                  )
-                ],
-              ),
+                    } catch (e) {
+                      print('下载图片失败: $e');
+                    }
+                  },
+                  child: Text('分享网络图片'),
+                ),
+                TextButton(
+                  onPressed: () async {
+                    RenderRepaintBoundary boundary = _globalKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
+                    ui.Image image = await boundary.toImage(pixelRatio: View.of(context).devicePixelRatio);
+                    ByteData byteData = await image.toByteData(format: ui.ImageByteFormat.png) as ByteData;
+                    Uint8List pngBytes = byteData.buffer.asUint8List();
+                    File file = await saveToLocal(pngBytes, 'shareTicket.png');
+                    Umshare.share(UmShareFileImgModel(file.path, UmShareMedia.weiBo, title: 'test-----'));
+                  },
+                  child: Text('分享截图'),
+                ),
+              ],
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -290,20 +251,12 @@ Future<Uint8List> compressImage(Uint8List imageBytes) async {
   if (currentSizeKb >= maxKb && Platform.isOhos) {
     int estimatedQuality = (maxKb / currentSizeKb * 100).toInt();
     estimatedQuality = estimatedQuality.clamp(10, 90);
-    bytes = await FlutterImageCompress.compressWithList(
-      originalBytes,
-      format: CompressFormat.jpeg,
-      quality: estimatedQuality,
-    );
+    bytes = await FlutterImageCompress.compressWithList(originalBytes, format: CompressFormat.jpeg, quality: estimatedQuality);
 
     int quality = 90;
     while (bytes.lengthInBytes >= maxKb * 1024 && quality > 10) {
       quality -= 20;
-      bytes = await FlutterImageCompress.compressWithList(
-        originalBytes,
-        format: CompressFormat.jpeg,
-        quality: quality,
-      );
+      bytes = await FlutterImageCompress.compressWithList(originalBytes, format: CompressFormat.jpeg, quality: quality);
     }
   }
   return bytes;
@@ -314,9 +267,9 @@ Future<File> saveToLocal(List<int> bytes, String name) async {
   File saveFile;
   Directory saveDir = await path_provider.getApplicationDocumentsDirectory();
   saveFile = File(path.join(saveDir.path, name));
-//    if (!saveFile.existsSync()) {
+  //    if (!saveFile.existsSync()) {
   saveFile.createSync(recursive: true);
   saveFile.writeAsBytesSync(bytes, flush: true);
-//    }
+  //    }
   return saveFile;
 }
